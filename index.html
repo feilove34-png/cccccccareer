@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>职业规划服务 - 陪伴你的职业成长</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #f472b6;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --card-shadow: 0 10px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f0f5ff 0%, #fdf4ff 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            object-position: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            font-size: 16px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+        }
+
+        .service-card.purple { border-top-color: var(--primary-color); }
+        .service-card.pink { border-top-color: var(--accent-color); }
+        .service-card.blue { border-top-color: #3b82f6; }
+
+        .experience-section-main {
+            margin-bottom: 60px;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        .experience-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .experience-title {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .experience-content {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .experience-content .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .experience-content .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .service-card.purple .service-icon { background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%); }
+        .service-card.pink .service-icon { background: linear-gradient(135deg, rgba(244, 114, 182, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%); }
+        .service-card.blue .service-icon { background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%); }
+
+        .service-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-features li {
+            padding: 12px 0;
+            color: var(--text-dark);
+            font-size: 14px;
+            padding-left: 28px;
+            position: relative;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .experience-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px dashed #ddd;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .experience-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .experience-item {
+            margin-bottom: 12px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .assessment-btn {
+            width: 100%;
+            padding: 14px 20px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .assessment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+        }
+
+        .service-card.pink.clickable {
+            cursor: pointer;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .about-section {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 60px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 24px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-section h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .contact-section p {
+            opacity: 0.9;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card.clickable {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .service-card.clickable::after {
+            content: '查看作品集 →';
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card.clickable:hover::after {
+            opacity: 1;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-header h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-content {
+            padding: 40px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .image-preview-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-preview-overlay.active {
+            display: flex;
+        }
+
+        .image-preview-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .image-preview-container img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-preview-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .image-preview-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .image-preview-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .career-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .career-modal-overlay.active {
+            display: flex;
+        }
+
+        .career-modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .career-modal-header {
+            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .career-modal-header h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .career-modal-content {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        }
+
+        .result-section {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(244, 63, 94, 0.05) 100%);
+            border-radius: 16px;
+        }
+
+        .result-section.active {
+            display: block;
+        }
+
+        .result-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .industry-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .industry-card h4 {
+            margin: 0 0 15px 0;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .job-tag {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .question-section {
+            margin-top: 20px;
+        }
+
+        .question-section h5 {
+            margin: 0 0 15px 0;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        .question-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ec4899;
+        }
+
+        .question-item p {
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .question-item .answer-hint {
+            color: var(--text-light);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .direction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .direction-btn {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1e40af;
+            transition: all 0.3s ease;
+        }
+
+        .direction-btn:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border-color: #3b82f6;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .campus-content-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .campus-content-item h5 {
+            margin: 0 0 12px 0;
+            color: #1e40af;
+            font-size: 16px;
+        }
+
+        .campus-content-item p {
+            margin: 8px 0;
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .campus-content-item ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .campus-content-item li {
+            margin-bottom: 8px;
+        }
+
+        .reset-btn {
+            background: #f1f5f9;
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .reset-btn:hover {
+            background: #e2e8f0;
+        }
+
+        footer {
+            padding: 20px;
+            background: #fafafa;
+        }
+
+        .portfolio-item-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .portfolio-item-desc {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-radius: 16px;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .stats {
+                gap: 30px;
+            }
+
+            .stat-value {
+                font-size: 26px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 30px 25px;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-card {
+                padding: 30px 25px;
+            }
+
+            .about-section {
+                padding: 30px 25px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                padding: 40px 25px;
+            }
+
+            .contact-section h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="public/微信图片_2026-05-16_131032_781.jpg" alt="懂你的CC" class="avatar">
+            <h1>懂你的CC</h1>
+            <p class="title">帮助每一位学子找到职业方向</p>
+            <p class="intro">拥有多年职业规划经验，专注于大学生职业发展领域，帮助数千名学生成功拿到心仪offer。擅长职业定位、简历优化、面试辅导及校园运营管理。</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-value">50+</span>
+                    <span class="stat-label">宣讲会场次</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">500+</span>
+                    <span class="stat-label">1v1辅导案例</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">95%</span>
+                    <span class="stat-label">offer成功率</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">10+</span>
+                    <span class="stat-label">高校合作</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="services-section">
+            <div class="section-title">
+                <h2>我能提供的服务</h2>
+                <p>提供全方位的职业规划服务，助力你的职业发展</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card purple clickable" id="portfolio-card">
+                    <div class="service-icon">🎤</div>
+                    <h3 class="service-title">职业规划宣讲会</h3>
+                    <p class="service-description">走进高校，为同学们带来生动有趣的职业规划讲座，帮助大家了解行业趋势、职业选择和发展路径。</p>
+                    <ul class="service-features">
+                        <li>行业趋势分析与解读</li>
+                        <li>职业选择与发展路径</li>
+                        <li>简历与面试技巧分享</li>
+                        <li>互动问答与现场答疑</li>
+                        <li>定制化主题内容</li>
+                    </ul>
+                </div>
+
+                <div class="service-card pink clickable" id="career-assessment-card">
+                    <div class="service-icon">💼</div>
+                    <h3 class="service-title">1v1职业规划辅导</h3>
+                    <p class="service-description">从职业定位到拿到offer，提供全程一对一辅导服务，量身定制职业发展方案。</p>
+                    <ul class="service-features">
+                        <li>职业定位与方向规划</li>
+                        <li>简历优化与包装</li>
+                        <li>面试技巧与模拟演练</li>
+                        <li>offer选择与谈判指导</li>
+                        <li>持续跟进与复盘</li>
+                    </ul>
+                    <button class="assessment-btn">🎯 开始职业测评</button>
+                </div>
+
+                <div class="service-card blue clickable" id="campus-ambassador-card">
+                    <div class="service-icon">👥</div>
+                    <h3 class="service-title">校园大使运营经验分享</h3>
+                    <p class="service-description">分享校园大使团队建设与运营经验，帮助高校建立高效的校园推广体系。</p>
+                    <ul class="service-features">
+                        <li>校园团队招募与管理</li>
+                        <li>活动策划与执行</li>
+                        <li>用户留存与转化策略</li>
+                        <li>团队激励与成长体系</li>
+                        <li>成功案例分享</li>
+                    </ul>
+                    <button class="assessment-btn">📋 选择感兴趣的方向</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-section-main">
+            <div class="section-title">
+                <h2>我的经验</h2>
+                <p>10年教育行业经验，分享职业规划方法论与心得</p>
+            </div>
+
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">🎤</div>
+                    <h3 class="experience-title">宣讲会经验</h3>
+                    <div class="experience-content">
+                        <div class="experience-item">
+                            <p><strong>覆盖10+高校</strong>：清华大学、北京大学、复旦大学、上海交通大学等知名高校</p>
+                        </div>
+                        <div class="experience-item">
+                            <p><strong>累计50+场宣讲</strong>：累计覆盖学生超过10000人次</p>
+                        </div>
+                        <div class="experience-item">
+                            <p><strong>学员好评率95%</strong>：帮助众多学生明确职业方向，斩获大厂offer</p>
+                        </div>
+                        <div class="experience-item">
+                            <p><strong>合作企业</strong>：与Google、SHEIN、京东、美团等知名企业保持合作</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">💡</div>
+                    <h3 class="experience-title">职业规划方法论</h3>
+                    <div class="experience-content">
+                        <div class="experience-item">
+                            <strong>核心价值观：</strong>
+                            <p>• 有结果必有道理 — 成功背后一定有方法论</p>
+                            <p>• 经历≠经验 — 经过反思的经历才称得上经验</p>
+                            <p>• 匹配度第一 — 不是你做了什么，而是你的经历与目标岗位的匹配程度</p>
+                        </div>
+                        <div class="experience-item">
+                            <strong>推荐赛道：</strong>
+                            <p>✅ 出海方向（Shein、Temu、美团Keeta）</p>
+                            <p>✅ 本地化生活（美团）</p>
+                            <p>✅ AI产品（车载语音、人形机器人）</p>
+                            <p>✅ 跨境电商</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">📝</div>
+                    <h3 class="experience-title">求职技巧分享</h3>
+                    <div class="experience-content">
+                        <div class="experience-item">
+                            <strong>面试准备要点：</strong>
+                            <p>• 准备1分钟、3分钟、5分钟版本自我介绍</p>
+                            <p>• 快速让面试官记住你，突出匹配度，展现自信</p>
+                            <p>• 面试官关心：Why（背景）、Result（结果）、Ability（能力）</p>
+                        </div>
+                        <div class="experience-item">
+                            <strong>简历加分项：</strong>
+                            <p>✅ 准备个人作品集（体现兴趣和研究）</p>
+                            <p>✅ 有垂直细分经验（"打深井"而非泛泛经历）</p>
+                            <p>✅ 过程指标定义（给领导更细的数据口径）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>关于我</h3>
+                    <p>我是一名资深职业规划顾问，拥有多年在互联网、教育行业的从业经验。曾帮助数千名大学生明确职业方向，成功拿到心仪的offer。</p>
+                    <p>我相信每个人都有无限潜力，关键是找到适合自己的方向。通过系统化的职业规划方法，帮助同学们了解自我、探索行业、制定路径，最终实现职业目标。</p>
+                    <p>除了一对一辅导，我还致力于校园职业教育的推广，通过宣讲会、工作坊等形式，让更多学生受益于科学的职业规划理念。</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 80px; margin-bottom: 20px;">🎯</div>
+                    <h4 style="color: var(--text-dark); margin-bottom: 15px;">核心价值观</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px; color: var(--text-light); font-size: 14px;">
+                        <p>✨ 专业：用专业知识赋能成长</p>
+                        <p>✨ 真诚：以真诚态度对待每一位学员</p>
+                        <p>✨ 结果：注重实际效果与成果</p>
+                        <p>✨ 陪伴：全程陪伴见证蜕变</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h3>开启你的职业规划之旅</h3>
+            <p>无论你是处于职业迷茫期，还是想提升求职竞争力，我都能为你提供专业的指导和帮助。</p>
+            <a href="mailto:career@example.com" class="contact-btn">立即咨询</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>职业规划服务 · 陪伴每一位学子成长</p>
+    </footer>
+
+    <div class="modal-overlay" id="portfolio-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>宣讲会作品集</h3>
+                <button class="close-btn" id="close-modal">×</button>
+            </div>
+            <div class="modal-content">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="public/微信图片_2026-05-16_131048_002.jpg" alt="宣讲现场" class="preview-img" data-title="企业宣讲现场" data-desc="为同学们介绍各大企业及职业发展方向">
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">企业宣讲现场</div>
+                            <div class="portfolio-item-desc">为同学们介绍各大企业及职业发展方向</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="public/微信图片_2026-05-16_131032_781.jpg" alt="校园讲座" class="preview-img" data-title="校园大型讲座" data-desc="面向全校学生的职业规划讲座">
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">校园大型讲座</div>
+                            <div class="portfolio-item-desc">面向全校学生的职业规划讲座</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="public/微信图片_2026-05-16_131110_914.jpg" alt="课堂宣讲" class="preview-img" data-title="课堂职业宣讲" data-desc="走进高校课堂分享职业规划知识">
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">课堂职业宣讲</div>
+                            <div class="portfolio-item-desc">走进高校课堂分享职业规划知识</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="public/微信图片_2026-05-16_131100_449.jpg" alt="互动指导" class="preview-img" data-title="现场互动指导" data-desc="与学生面对面交流答疑解惑">
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">现场互动指导</div>
+                            <div class="portfolio-item-desc">与学生面对面交流答疑解惑</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="public/微信图片_2026-05-16_131123_698.jpg" alt="小班授课" class="preview-img" data-title="小班精品课程" data-desc="针对性职业规划指导课程">
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">小班精品课程</div>
+                            <div class="portfolio-item-desc">针对性职业规划指导课程</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-section">
+                    <div class="stat-box">
+                        <span class="number">50+</span>
+                        <span class="label">宣讲会场次</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">10000+</span>
+                        <span class="label">覆盖学生</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">10+</span>
+                        <span class="label">合作高校</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">95%</span>
+                        <span class="label">好评率</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-preview-overlay" id="image-preview">
+        <div class="image-preview-container">
+            <button class="image-preview-close" id="close-preview">×</button>
+            <img src="" alt="" id="preview-image">
+            <div class="image-preview-caption" id="preview-caption"></div>
+        </div>
+    </div>
+
+    <div class="career-modal-overlay" id="career-modal">
+        <div class="career-modal">
+            <div class="career-modal-header">
+                <h3>🎯 职业规划测评</h3>
+                <button class="close-btn" id="close-career-modal">×</button>
+            </div>
+            <div class="career-modal-content">
+                <form id="career-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="school">学校</label>
+                            <input type="text" id="school" placeholder="请输入您的学校名称" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="major">专业</label>
+                            <input type="text" id="major" placeholder="请输入您的专业" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="interests">兴趣爱好</label>
+                        <textarea id="interests" placeholder="请描述您的兴趣爱好、特长或擅长的技能（例如：编程、写作、数据分析、沟通等）" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">职业目标</label>
+                        <select id="goals" required>
+                            <option value="">请选择您的职业目标</option>
+                            <option value="tech">技术研发方向</option>
+                            <option value="product">产品经理方向</option>
+                            <option value="marketing">市场营销方向</option>
+                            <option value="finance">金融方向</option>
+                            <option value="consulting">咨询方向</option>
+                            <option value="other">其他方向</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">开始分析 →</button>
+                </form>
+                
+                <div class="result-section" id="result-section">
+                    <div class="result-title">🎓 您的职业规划分析结果</div>
+                    
+                    <div class="industry-card" id="industry-card">
+                        <h4>推荐行业</h4>
+                        <div class="job-tags" id="industry-tags"></div>
+                    </div>
+                    
+                    <div class="industry-card">
+                        <h4>推荐岗位</h4>
+                        <div class="job-tags" id="job-tags"></div>
+                        
+                        <div class="question-section">
+                            <h5>面试题库练习</h5>
+                            <div id="questions-container"></div>
+                        </div>
+                    </div>
+                    
+                    <button class="reset-btn" id="reset-btn">重新测评</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="career-modal-overlay" id="campus-modal">
+        <div class="career-modal">
+            <div class="career-modal-header" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                <h3>👥 校园大使运营经验分享</h3>
+                <button class="close-btn" id="close-campus-modal">×</button>
+            </div>
+            <div class="career-modal-content">
+                <div id="campus-selection">
+                    <h4 style="color: var(--text-dark); margin-bottom: 20px;">请选择你想了解的方向：</h4>
+                    <div class="direction-grid">
+                        <button class="direction-btn" data-direction="recruitment">🎯 招募</button>
+                        <button class="direction-btn" data-direction="management">👥 团队管理及激励</button>
+                        <button class="direction-btn" data-direction="activity">📋 活动运营</button>
+                        <button class="direction-btn" data-direction="sales">💼 销售运营</button>
+                        <button class="direction-btn" data-direction="success">🏆 成功经验分享</button>
+                    </div>
+                </div>
+                
+                <div class="result-section" id="campus-result-section">
+                    <div class="result-title" id="campus-result-title"></div>
+                    <div id="campus-content"></div>
+                    <button class="reset-btn" id="campus-reset-btn">重新选择</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const portfolioCard = document.getElementById('portfolio-card');
+        const portfolioModal = document.getElementById('portfolio-modal');
+        const closeModal = document.getElementById('close-modal');
+        const imagePreview = document.getElementById('image-preview');
+        const closePreview = document.getElementById('close-preview');
+        const previewImage = document.getElementById('preview-image');
+        const previewCaption = document.getElementById('preview-caption');
+
+        portfolioCard.addEventListener('click', () => {
+            portfolioModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModal.addEventListener('click', () => {
+            portfolioModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        portfolioModal.addEventListener('click', (e) => {
+            if (e.target === portfolioModal) {
+                portfolioModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && portfolioModal.classList.contains('active')) {
+                portfolioModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            if (e.key === 'Escape' && imagePreview.classList.contains('active')) {
+                imagePreview.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.querySelectorAll('.preview-img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                previewImage.src = img.src;
+                previewImage.alt = img.alt;
+                previewCaption.innerHTML = `<strong>${img.dataset.title}</strong><br>${img.dataset.desc}`;
+                imagePreview.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closePreview.addEventListener('click', () => {
+            imagePreview.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        imagePreview.addEventListener('click', (e) => {
+            if (e.target === imagePreview) {
+                imagePreview.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        const careerModal = document.getElementById('career-modal');
+        const closeCareerModal = document.getElementById('close-career-modal');
+        const careerAssessmentCard = document.getElementById('career-assessment-card');
+        const assessmentBtn = document.querySelector('.assessment-btn');
+        const careerForm = document.getElementById('career-form');
+        const resultSection = document.getElementById('result-section');
+        const industryTags = document.getElementById('industry-tags');
+        const jobTags = document.getElementById('job-tags');
+        const questionsContainer = document.getElementById('questions-container');
+        const resetBtn = document.getElementById('reset-btn');
+
+        const questionBank = {
+            tech: [
+                { q: '请介绍一个你参与过的项目，你在其中扮演什么角色？', a: '思路：STAR法则 - 背景、任务、行动、结果' },
+                { q: '你熟悉哪些编程语言？请举例说明你如何使用它们解决问题。', a: '思路：突出深度和实际应用经验' },
+                { q: '请解释什么是RESTful API？它的设计原则是什么？', a: '思路：强调资源、HTTP方法、无状态等核心概念' },
+                { q: '你遇到过最难的技术问题是什么？如何解决的？', a: '思路：问题描述、分析过程、解决方案、收获' },
+                { q: '什么是微服务架构？它的优缺点是什么？', a: '思路：对比单体架构，强调高可用、可扩展' }
+            ],
+            product: [
+                { q: '你最近使用过的一款产品是什么？请分析它的优缺点。', a: '思路：从用户体验、功能设计、商业模式等角度分析' },
+                { q: '如果让你设计一款校园社交产品，你会怎么做？', a: '思路：用户需求、核心功能、差异化竞争点' },
+                { q: '你如何理解产品经理的核心能力？', a: '思路：需求分析、项目管理、沟通协调、数据驱动' },
+                { q: '如何判断一个产品功能是否应该上线？', a: '思路：用户价值、商业价值、技术可行性、ROI' },
+                { q: '产品上线后数据不如预期，你会怎么做？', a: '思路：数据分析、用户调研、迭代优化' }
+            ],
+            marketing: [
+                { q: '你认为一个成功的营销活动应该具备哪些要素？', a: '思路：目标明确、创意吸引、渠道精准、数据追踪' },
+                { q: '如何进行用户增长？请举例说明。', a: '思路：拉新、留存、转化的策略和方法' },
+                { q: '社交媒体营销和内容营销有什么区别？', a: '思路：渠道特性、内容形式、目标用户' },
+                { q: '如何衡量营销活动的效果？', a: '思路：KPI设定、数据分析、ROI计算' },
+                { q: '如果预算有限，如何做有效的营销推广？', a: '思路：精准投放、UGC、跨界合作' }
+            ],
+            finance: [
+                { q: '什么是市盈率(P/E)？它的意义是什么？', a: '思路：股价与每股收益的比率，衡量估值' },
+                { q: '请解释DCF模型的基本原理。', a: '思路：现金流折现，估算企业内在价值' },
+                { q: '你为什么想从事金融行业？', a: '思路：兴趣、能力匹配、职业发展规划' },
+                { q: '什么是Beta系数？它有什么作用？', a: '思路：衡量系统性风险，用于CAPM模型' },
+                { q: '如何分析一家公司的财务报表？', a: '思路：三大报表、关键比率、趋势分析' }
+            ],
+            consulting: [
+                { q: '请估算北京有多少辆出租车？', a: '思路：市场规模、需求供给、合理假设' },
+                { q: '如果客户不接受你的建议怎么办？', a: '思路：理解顾虑、数据支撑、沟通技巧' },
+                { q: '你为什么想加入咨询行业？', a: '思路：解决问题的热情、学习成长、行业视野' },
+                { q: '请描述一次你解决复杂问题的经历。', a: '思路：问题拆解、分析框架、执行过程' },
+                { q: '什么是MECE原则？请举例说明。', a: '思路：相互独立、完全穷尽的分析方法' }
+            ],
+            other: [
+                { q: '请介绍一下你自己。', a: '思路：简洁明了，突出亮点和匹配度' },
+                { q: '你的优缺点是什么？', a: '思路：优点结合岗位，缺点要有改进措施' },
+                { q: '你为什么选择我们公司？', a: '思路：了解公司、文化匹配、职业发展' },
+                { q: '你的职业规划是什么？', a: '思路：短期目标、长期愿景、与公司的契合' },
+                { q: '你遇到过的最大挑战是什么？', a: '思路：挑战描述、应对策略、成长收获' }
+            ]
+        };
+
+        const recommendByInterest = {
+            '编程': { industry: ['互联网', '科技', '人工智能'], jobs: ['软件工程师', '前端开发', '算法工程师'] },
+            '写作': { industry: ['媒体', '互联网', '教育'], jobs: ['内容运营', '产品文案', '新媒体编辑'] },
+            '数据分析': { industry: ['互联网', '金融', '咨询'], jobs: ['数据分析师', '商业分析', '量化分析'] },
+            '沟通': { industry: ['咨询', '销售', '市场'], jobs: ['咨询顾问', '客户经理', '市场专员'] },
+            '设计': { industry: ['互联网', '广告', '消费品'], jobs: ['UI/UX设计师', '品牌设计', '产品设计'] },
+            '演讲': { industry: ['教育', '培训', '咨询'], jobs: ['培训讲师', '课程顾问', '企业培训'] },
+            '管理': { industry: ['互联网', '金融', '制造业'], jobs: ['项目经理', '运营管理', '产品经理'] },
+            '创意': { industry: ['广告', '互联网', '娱乐'], jobs: ['广告创意', '产品策划', '活动策划'] }
+        };
+
+        function getRecommendations(interests, goals) {
+            let industry = [];
+            let jobs = [];
+            
+            const defaultRecommendations = {
+                tech: { industry: ['互联网', '人工智能', '半导体'], jobs: ['软件工程师', '算法工程师', '系统架构师'] },
+                product: { industry: ['互联网', '消费科技', '教育科技'], jobs: ['产品经理', '产品运营', '用户研究'] },
+                marketing: { industry: ['互联网', '消费品', '新媒体'], jobs: ['市场营销', '品牌经理', '增长黑客'] },
+                finance: { industry: ['金融', '投资', '互联网金融'], jobs: ['投资分析', '风险管理', '金融产品'] },
+                consulting: { industry: ['管理咨询', '战略咨询', '科技咨询'], jobs: ['管理顾问', '战略分析师', '行业研究员'] },
+                other: { industry: ['教育', '非营利', '创业'], jobs: ['教育培训', '项目管理', '运营管理'] }
+            };
+
+            const matched = defaultRecommendations[goals] || defaultRecommendations.other;
+            industry = [...matched.industry];
+            jobs = [...matched.jobs];
+
+            for (const key of Object.keys(recommendByInterest)) {
+                if (interests.includes(key)) {
+                    const rec = recommendByInterest[key];
+                    industry = [...new Set([...industry, ...rec.industry])].slice(0, 3);
+                    jobs = [...new Set([...jobs, ...rec.jobs])].slice(0, 3);
+                }
+            }
+
+            return { industry: industry.slice(0, 3), jobs: jobs.slice(0, 3) };
+        }
+
+        function showQuestions(goals) {
+            const questions = questionBank[goals] || questionBank.other;
+            questionsContainer.innerHTML = '';
+            
+            questions.forEach((item, index) => {
+                const questionItem = document.createElement('div');
+                questionItem.className = 'question-item';
+                questionItem.innerHTML = `
+                    <p><strong>${index + 1}. ${item.q}</strong></p>
+                    <div class="answer-hint">💡 ${item.a}</div>
+                `;
+                questionsContainer.appendChild(questionItem);
+            });
+        }
+
+        function showResults(industry, jobs, goals) {
+            industryTags.innerHTML = industry.map(i => `<span class="job-tag">${i}</span>`).join('');
+            jobTags.innerHTML = jobs.map(j => `<span class="job-tag">${j}</span>`).join('');
+            showQuestions(goals);
+            resultSection.classList.add('active');
+        }
+
+        careerAssessmentCard.addEventListener('click', () => {
+            careerModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        assessmentBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            careerModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeCareerModal.addEventListener('click', () => {
+            careerModal.classList.remove('active');
+            document.body.style.overflow = '';
+            resultSection.classList.remove('active');
+            careerForm.reset();
+        });
+
+        careerModal.addEventListener('click', (e) => {
+            if (e.target === careerModal) {
+                careerModal.classList.remove('active');
+                document.body.style.overflow = '';
+                resultSection.classList.remove('active');
+                careerForm.reset();
+            }
+        });
+
+        careerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const school = document.getElementById('school').value;
+            const major = document.getElementById('major').value;
+            const interests = document.getElementById('interests').value;
+            const goals = document.getElementById('goals').value;
+            
+            const recommendations = getRecommendations(interests, goals);
+            showResults(recommendations.industry, recommendations.jobs, goals);
+        });
+
+        resetBtn.addEventListener('click', () => {
+            resultSection.classList.remove('active');
+            careerForm.reset();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && careerModal.classList.contains('active')) {
+                careerModal.classList.remove('active');
+                document.body.style.overflow = '';
+                resultSection.classList.remove('active');
+                careerForm.reset();
+            }
+        });
+
+        const campusModal = document.getElementById('campus-modal');
+        const closeCampusModal = document.getElementById('close-campus-modal');
+        const campusCard = document.getElementById('campus-ambassador-card');
+        const campusSelection = document.getElementById('campus-selection');
+        const campusResultSection = document.getElementById('campus-result-section');
+        const campusResultTitle = document.getElementById('campus-result-title');
+        const campusContent = document.getElementById('campus-content');
+        const campusResetBtn = document.getElementById('campus-reset-btn');
+
+        const campusData = {
+            recruitment: {
+                title: '🎯 校园大使招募策略',
+                content: `
+                    <div class="campus-content-item">
+                        <h5>📌 四大金刚部门体系</h5>
+                        <ul>
+                            <li><strong>BD部门：</strong>负责曝光（目标10w+曝光度），联络新媒体KOL互推合作</li>
+                            <li><strong>市场部门：</strong>负责猎头拉新校园团队Leader（目标60+学校新增）</li>
+                            <li><strong>文案部门：</strong>负责招新素材，确定文案主题及篇幅，定周期发布</li>
+                            <li><strong>HR部门：</strong>负责前期培训到开展1v1面试</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>🎯 Leader选拔核心原则</h5>
+                        <p><strong>筛选标准（优先级）：</strong>靠谱稳定 > 有目标感有野心 > 有影响力</p>
+                        <ul>
+                            <li><strong>信念感强：</strong>意志坚定、不容易动摇、给人稳定感</li>
+                            <li><strong>个人能力强：</strong>灵活性强聪明、目标导向、抗压强</li>
+                            <li><strong>影响力：</strong>值得他人信任、够大胆、人脉广</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>💬 面试沟通SOP（四步法）</h5>
+                        <ol>
+                            <li><strong>熟络关系</strong> - 判断对方是否认同项目，了解从何处得知</li>
+                            <li><strong>明确目标</strong> - 了解加入动机（for参加项目？还是喜欢做市场？）</li>
+                            <li><strong>了解过去</strong> - 引导对方发现自己潜在的价值</li>
+                            <li><strong>倾听行动方案</strong> - 判断可行性并给予支持</li>
+                        </ol>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>⏱️ 时间周期与激励</h5>
+                        <p><strong>周期目标：</strong>3周（21天）完成招募目标（500+申请者、60+校园团队）</p>
+                        <p><strong>激励机制：</strong>按权重分配bonus（BD 2000元、市场 3000元、HR 3000元）</p>
+                    </div>
+                `
+            },
+            management: {
+                title: '👥 团队管理及激励',
+                content: `
+                    <div class="campus-content-item">
+                        <h5>📊 ABC分类分级管理</h5>
+                        <ul>
+                            <li><strong>A类：</strong>上学期TOP10 + Leader参加过项目 → 最优先支持</li>
+                            <li><strong>B类：</strong>TOP10后/新学校 + 有人参加过项目 → 次优先</li>
+                            <li><strong>C类：</strong>新学校 + 无人参加过项目 → 最后启动</li>
+                        </ul>
+                        <p><em>动态调整：根据报名情况和Leader积极性实时升降级</em></p>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>👨‍👩‍👧‍👦 团队内部管理机制</h5>
+                        <ul>
+                            <li><strong>小团队作战：</strong>6-10人规模</li>
+                            <li><strong>一人一职责：</strong>帮助成员找到团队定位</li>
+                            <li><strong>Leader以身作则：</strong>先让Leader做出成绩，再带动成员</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>🎁 激励体系</h5>
+                        <ul>
+                            <li>月度私享会参与资格</li>
+                            <li>活动筹办权</li>
+                            <li>TOP团队大厂内推资格</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>💡 沟通赋能原则</h5>
+                        <p><strong>核心：</strong>提供情绪价值 + 给予干货帮助</p>
+                        <ol>
+                            <li><strong>取得信任</strong> - 让对方愿意被你帮助</li>
+                            <li><strong>帮助做出结果</strong> - 让对方有成就感</li>
+                            <li><strong>让对方被"看到"</strong> - 实现自我价值</li>
+                        </ol>
+                    </div>
+                `
+            },
+            activity: {
+                title: '📋 活动运营',
+                content: `
+                    <div class="campus-content-item">
+                        <h5>🎯 目标人群画像（三要素）</h5>
+                        <ol>
+                            <li><strong>信任你：</strong>愿意听你的建议、遇到问题会先找你</li>
+                            <li><strong>有消费能力：</strong>已付费考证/高消费兴趣/家庭背景好</li>
+                            <li><strong>有成长需求：</strong>想拿大厂offer、积极向上</li>
+                        </ol>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>📢 精准获客渠道</h5>
+                        <ul>
+                            <li><strong>KOL合作：</strong>教培机构校园代理TOP sales、学校认同度高的代表</li>
+                            <li><strong>组织合作：</strong>职业规划社团、学术部门</li>
+                            <li><strong>公域投放：</strong>小红书/抖音TAG运营、评论区获客</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>💬 引流策略</h5>
+                        <ul>
+                            <li><strong>打造个人品牌：</strong>一周2-3次朋友圈内容（项目小作文、招募推送、团队收获）</li>
+                            <li><strong>1v1私戳沟通：</strong>以个人成长话题约见面/电话</li>
+                            <li><strong>话题吸引：</strong>职业/实习/简历等话题主动吸引用户</li>
+                        </ul>
+                    </div>
+                `
+            },
+            sales: {
+                title: '💼 销售运营',
+                content: `
+                    <div class="campus-content-item">
+                        <h5>🌅 早鸟阶段</h5>
+                        <ul>
+                            <li>1v1直接转化</li>
+                            <li>沟通力培训：强调转化能力是闭环中最关键一环</li>
+                            <li>分阶段启动：A类团队→B类团队→C类团队</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>🎉 活动阶段</h5>
+                        <ul>
+                            <li><strong>流程：</strong>线上社群预热 → 线下宣讲会 → 茶话会</li>
+                            <li><strong>关键时机：</strong>把握"黄金3天"做跟进转化</li>
+                            <li><strong>团队PK：</strong>设置TOP3团队奖励</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>🎁 福利门槛设计</h5>
+                        <ul>
+                            <li><strong>团队做成2人+：</strong>月度私享会参与资格</li>
+                            <li><strong>团队做成3人+：</strong>线上大厂群面筹办权</li>
+                            <li><strong>团队做成5人+：</strong>大厂讲师线下巡讲活动筹办权</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>📊 数据追踪与反馈机制</h5>
+                        <ul>
+                            <li><strong>每日：</strong>收集沟通&转化数据、发布TOP榜单</li>
+                            <li><strong>每周：</strong>提交周报、发布周复盘</li>
+                            <li><strong>每月：</strong>月度复盘大会、表彰TOP团队</li>
+                        </ul>
+                    </div>
+                `
+            },
+            success: {
+                title: '🏆 成功经验分享',
+                content: `
+                    <div class="campus-content-item">
+                        <h5>🎯 核心运营框架：三个关键指标</h5>
+                        <ul>
+                            <li><strong>对的团队：</strong>招募+管理 → 选拔优质Leader，构建高效团队</li>
+                            <li><strong>来对的人：</strong>引流 → 精准定位目标用户群体</li>
+                            <li><strong>对的转化方式：</strong>转化 → 1v1转化+活动转化相结合</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>💡 文化与心态建设</h5>
+                        <p><strong>Slogan：</strong>有能力的人值得被看见</p>
+                        <ul>
+                            <li><strong>职场思维 vs 学生思维：</strong>去掉"学习"心态，树立"价值兑现"意识</li>
+                            <li><strong>人人都是Leader：</strong>强调每个人都能影响他人</li>
+                            <li><strong>核心理念：</strong>不是因为厉害才开始，而是开始了才会让你很厉害</li>
+                        </ul>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>🔑 核心逻辑</h5>
+                        <p style="text-align: center; font-weight: 600; color: #1e40af; font-size: 16px;">
+                            筛选对的人 → 用对的方法赋能 → 通过激励机制驱动结果
+                        </p>
+                    </div>
+                    <div class="campus-content-item">
+                        <h5>🌟 成功案例</h5>
+                        <p><strong>案例一：</strong>3周完成500+申请者、60+校园团队招募目标</p>
+                        <p><strong>案例二：</strong>通过ABC分级管理，团队效率提升200%</p>
+                        <p><strong>案例三：</strong>把握"黄金3天"跟进转化，转化率提升至20%</p>
+                    </div>
+                `
+            }
+        };
+
+        campusCard.addEventListener('click', () => {
+            campusModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.querySelectorAll('.direction-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const direction = btn.dataset.direction;
+                const data = campusData[direction];
+                campusResultTitle.textContent = data.title;
+                campusContent.innerHTML = data.content;
+                campusSelection.style.display = 'none';
+                campusResultSection.classList.add('active');
+            });
+        });
+
+        closeCampusModal.addEventListener('click', () => {
+            campusModal.classList.remove('active');
+            document.body.style.overflow = '';
+            campusResultSection.classList.remove('active');
+            campusSelection.style.display = 'block';
+        });
+
+        campusModal.addEventListener('click', (e) => {
+            if (e.target === campusModal) {
+                campusModal.classList.remove('active');
+                document.body.style.overflow = '';
+                campusResultSection.classList.remove('active');
+                campusSelection.style.display = 'block';
+            }
+        });
+
+        campusResetBtn.addEventListener('click', () => {
+            campusResultSection.classList.remove('active');
+            campusSelection.style.display = 'block';
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && campusModal.classList.contains('active')) {
+                campusModal.classList.remove('active');
+                document.body.style.overflow = '';
+                campusResultSection.classList.remove('active');
+                campusSelection.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
